@@ -23,15 +23,17 @@ int prime_num(int n)
   for(i=2;i<n;i++)
   {
     isPrime = Prime(i);
-    if(isPrime==true)
+    if(isPrime==true&&i<=13)
     {
         if(n%i==0)
         continue;
+        
         else{
-           
-        count++;}
+           count++;}
         
     }
+    else if(isPrime==true&&i>13)
+    count++;
     else
     {
       if(commDiv(n,i)==1)
