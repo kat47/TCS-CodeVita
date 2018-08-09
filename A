@@ -1,0 +1,82 @@
+//This is The Coding Area
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int prime_num(int);//increment if a prime number
+bool Prime(int);//to check if it is a prime number
+int gcd(int,int);//to check number of common factors
+int commDiv(int,int);
+int main()
+{
+  int num;
+  cin>>num;
+  int count = prime_num(num);
+  cout<<count;
+  
+  return 0;
+}
+int prime_num(int n)
+{
+  int count=1;
+  int i;
+  bool isPrime;
+  for(i=2;i<n;i++)
+  {
+    isPrime = Prime(i);
+    if(isPrime==true)
+    {
+        if(n%i==0)
+        continue;
+        else{
+           
+        count++;}
+        
+    }
+    else
+    {
+      if(commDiv(n,i)==1)
+        {
+           
+            count++;}
+    }
+  }
+  return count;
+}
+bool Prime(int num)
+{
+   bool flag=true;
+    for(int i = 2; i <= num / 2; i++) {
+       if(num % i == 0) {
+          flag = false;
+          break;
+       }
+    }
+    return flag;
+}
+int gcd(int a, int b)
+{
+    if (a == 0)
+        return b;
+    return gcd(b%a, a);
+}
+int commDiv(int a,int b)
+{
+    
+    int n = gcd(a, b);
+ 
+    
+    int result = 0;
+    for (int i=1; i<=sqrt(n); i++)
+    {
+        
+        if (n%i==0)
+        {
+            
+            if (n/i == i)
+                result += 1;
+            else
+                result += 2;
+        }
+    }
+    return result;
+}
